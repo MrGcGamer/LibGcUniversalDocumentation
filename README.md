@@ -1,7 +1,7 @@
 # LibGcUniversal
 LibGcUniversal is a universal library for tweak development I made because I think it's annoying to add a new library for every little thing.
 
-## Contens of LibGcUniversal
+## Contents of LibGcUniversal
  - GcColorPickerCell
  - GcImagePickerCell
  - GcDuoTwitterCell
@@ -46,7 +46,7 @@ The `supportsAlpha` property is optional and will default to `true` if nothing e
 ###### fallback
 The `fallback` property is optional and will default to a clear color if the fallback color hasn’t been set.
 
-You may use any color hex code which condones to one of the follow color hex code notations:
+You may use any color hex code which condones to one of the following color hex code notations:
  - `rgb`
  - `rgba`
  - `rrggbb`
@@ -162,7 +162,7 @@ It is also possible to check if the user selected an image like this:
 ```objc
 BOOL isPhoto = [GcImagePickerUtils isImageInDefaults:@"DEFAULTS" withKey:@"KEY"];
 ```
-, if you prefer that (though it doesn't really make any difference which method you use).
+If you prefer that (though it doesn't really make any difference which method you use).
 
 
 ### Implementation of a duo Twitter cell
@@ -215,7 +215,7 @@ The `HelperFunctions.h` file includes this interface:
                 size:(CGSize)size ;
 @end
 ```
-,meaning you can use the HelperFunctions like this:
+Therefor you can use the HelperFunctions like this:
 ```objc
 UIView *view = [UIView new];
 [someOtherView addSubview:view];
