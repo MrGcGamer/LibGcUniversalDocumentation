@@ -213,6 +213,8 @@ The `HelperFunctions.h` file includes this interface:
 -(void)anchorCenterX:(nullable NSLayoutAnchor <NSLayoutXAxisAnchor *> *)centerX 
              centerY:(nullable NSLayoutAnchor <NSLayoutYAxisAnchor *> *)centerY 
                 size:(CGSize)size ;
+
+-(void)anchorEqualsToView:(UIView *)view padding:(UIEdgeInsets)insets ;
 @end
 ```
 Therefor you can use the HelperFunctions like this:

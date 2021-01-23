@@ -11,5 +11,7 @@ NS_ASSUME_NONNULL_BEGIN
 -(void)anchorCenterX:(nullable NSLayoutAnchor <NSLayoutXAxisAnchor *> *)centerX 
              centerY:(nullable NSLayoutAnchor <NSLayoutYAxisAnchor *> *)centerY 
                 size:(CGSize)size ;
+
+-(void)anchorEqualsToView:(UIView *)view padding:(UIEdgeInsets)insets ;
 @end
 NS_ASSUME_NONNULL_END
