@@ -57,7 +57,7 @@ I recommend using `rrggbbaa`.
 Once this is implemented you can then get the chosen color from within your tweak. So an example of how to retrieve the color could look something like this:
 
 ```objc
-#import "GcUniversal/GcImageColorUtils.h"
+#import "GcUniversal/GcColorPickerUtils.h"
 
 %hook HOOKHERE
 -(void)someMethod {
