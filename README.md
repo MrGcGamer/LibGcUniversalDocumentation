@@ -184,8 +184,6 @@ PreferenceBundle plist (Root.plist e.g.)
         <string>TwitterTagOfSecondAccount</string>
         <key>secondURL</key>
         <string>URLToAnotherFancyImage</string>
-        <key>height</key>
-        <real>57</real>
     </dict>
 ```
 `firstURL` and `secondURL` are optional values that can be set to specify an URL to the images for each account somewhere online.
