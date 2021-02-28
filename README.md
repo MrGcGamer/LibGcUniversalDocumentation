@@ -7,20 +7,27 @@ LibGcUniversal is a universal library for tweak development I made because I thi
  - GcDuoTwitterCell
  - Little helper functions for NSLayoutConstraints
 
-## Usage
+# Usage
 
-### Installation in theos:
+## Installation in Theos
+
+### Automatic installation
+
+Run the `install.sh` script in this repository to automatically copy the necessary files.
+
+### Manual installation
+
 1. Download this repository
 2. Put the `.dylib` into your `theos/lib` folder
 3. Put the `GcUniversal` folder into your `theos/include` folder 
 4. Done!
 
-### Installation in your project:
+## Project configuration
 1. Add `TWEAKNAME_LIBRARIES = gcuniversal` to your makefiles (only to your tweak makefile if you only use the helper functions)
 2. Add `com.mrgcgamer.libgcuniversal` to the `Depends` in your `control` file
 3. Done!
 
-### Implementation of a color picker:
+## Implementation of a color picker
 PreferenceBundle plist (Root.plist e.g.)
 ```xml
     <dict>
@@ -40,10 +47,10 @@ PreferenceBundle plist (Root.plist e.g.)
         <string>ffffffff</string>
     </dict>
 ```
-###### supportsAlpha
+### supportsAlpha
 The `supportsAlpha` property is optional and will default to `true` if nothing else has been specified.
 
-###### fallback
+### fallback
 The `fallback` property is optional and will default to a clear color if the fallback color hasn’t been set.
 
 You may use any color hex code which condones to one of the following color hex code notations:
@@ -74,7 +81,7 @@ You may also use:
 ```
 Valid fallback values have to condone one of the notations mentioned above.
 
-### Implementation of an image picker:
+## Implementation of an image picker
 PreferenceBundle plist (Root.plist e.g.)
 ```xml
     <dict>
@@ -165,7 +172,7 @@ BOOL isPhoto = [GcImagePickerUtils isImageInDefaults:@"DEFAULTS" withKey:@"KEY"]
 If you prefer that (though it doesn't really make any difference which method you use).
 
 
-### Implementation of a duo Twitter cell
+## Implementation of a duo Twitter cell
 PreferenceBundle plist (Root.plist e.g.)
 
 ```xml
@@ -193,7 +200,7 @@ If don't want to use the URLs, you will also need to include the profile picture
 It is recommended to use pictures of a resolution of `400x400`.
 The pictures will have to have the same name as the Twitter tag of the corresponding account and be stored as `.png`s.
 
-### Using the helper functions for NSLayoutConstraints
+## Using the helper functions for NSLayoutConstraints
 First of all, you will need to import HelperFunction.h as follows:
 ```objc
 #import "GcUniversal/HelperFunctions.h"
