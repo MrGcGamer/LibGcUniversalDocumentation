@@ -235,4 +235,47 @@ furthermore, this would constraint the `widthAnchor` and `heightAnchor` of `view
 
 If you are looking for a better explanation of this function, I recommend watching [this](https://www.youtube.com/watch?v=iqpAP7s3b-8&t=840s) video, as it's also where I got the function from, which I tried to convert to Obj-C.
 
+## Using the color utils
+Don't forget to import the `GcColorUtils.h`.
+```objc
+#import "GcUniversal/GcColorUtils.h"
+```
+The interface in `GcColorUtils.h` looks as follows:
+```objc
+typedef NS_ENUM(NSUInteger, ColorComponent) {
+   kColorRed,
+   kColorGreen,
+   kColorBlue,
+   kColorHue,
+   kColorSaturation,
+   kColorBrightness,
+   kColorAlpha
+};
+
+@interface UIColor (colorUtils)
++ (UIColor *)closestColorFromArray:(NSArray *)array toColor:(UIColor *)color ;
+- (CGFloat)getColorComponent:(ColorComponent)component ;
+- (CGFloat)rgbValue;
+- (BOOL)isGrayscale;
+@end
+```
+All the functions should be relativ self explanatory I think, but I will explain a few of them anyways.
+The `closestColorFromArray: toColor: ;` function returns the color from the input array, which is the closest to the input color.
+The `rgbValue` function returns a float between 0 and 3. This float is calcualted by adding the `r`, `g` and `b` values of the color together.
+
+## Using the image utils
+Don't forget to import the `GcColorUtils.h`.
+```objc
+#import "GcUniversal/GcImageUtils.h"
+```
+The interface in `GcImageUtils.h` looks as follows:
+```objc
+@interface UIImage (imageUtils)
++ (UIImage *)stockImgForBundleID:(NSString *)arg1 ;
+- (UIColor *)averageColor;
+- (NSArray <UIColor *> *)dominantColors;
+@end
+```
+All of these functions should be self explanaetory though, but if you do have a question, just ask me on Twitter or something.
+
 If you want to ask me anything about my library feel free to ask me on [Twitter](https://twitter.com/messages/compose?recipient_id=860938938910986244).
