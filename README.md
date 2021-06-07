@@ -2,10 +2,12 @@
 LibGcUniversal is a universal library for tweak development I made because I think it's annoying to add a new library for every little thing.
 
 ## Contents of LibGcUniversal
- - GcColorPickerCell
- - GcImagePickerCell
- - GcDuoTwitterCell
- - Little helper functions for NSLayoutConstraints
+ - [GcColorPickerCell](https://github.com/MrGcGamer/LibGcUniversalDocumentation#implementation-of-a-color-picker)
+ - [GcImagePickerCell](https://github.com/MrGcGamer/LibGcUniversalDocumentation#implementation-of-an-image-picker)
+ - [GcDuoTwitterCell](https://github.com/MrGcGamer/LibGcUniversalDocumentation#implementation-of-a-duo-twitter-cell)
+ - [Little helper functions for NSLayoutConstraints](https://github.com/MrGcGamer/LibGcUniversalDocumentation#using-the-helper-functions-for-nslayoutconstraints)
+ - [Color utils](https://github.com/MrGcGamer/LibGcUniversalDocumentation#using-the-color-utils)
+ - [Image utils](https://github.com/MrGcGamer/LibGcUniversalDocumentation#using-the-image-utils)
 
 # Usage
 
@@ -193,7 +195,7 @@ PreferenceBundle plist (Root.plist e.g.)
         <string>URLToAnotherFancyImage</string>
     </dict>
 ```
-`firstURL` and `secondURL` are optional values that can be set to specify an URL to the images for each account somewhere online.
+`firstURL` and `secondURL` are optional values, which can be set, to specify an URL to the images for each account somewhere online.
 If you use the URLs, make sure they link to the images directly. It is also possible to have only one image loaded using the URL and the other one using local files.
 
 If don't want to use the URLs, you will also need to include the profile pictures of the two accounts in the `Resources` folder of your preferences.
