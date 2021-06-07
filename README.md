@@ -180,7 +180,7 @@ PreferenceBundle plist (Root.plist e.g.)
 ```xml
     <dict>
         <key>cellClass</key>
-        <string>DuoTwitterCell</string>
+        <string>GcDuoTwitterCell</string>
         <key>firstLabel</key>
         <string>LabelForTheFirstAccount</string>
         <key>firstAccount</key>
