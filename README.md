@@ -4,6 +4,7 @@ LibGcUniversal is a universal library for tweak development I made because I thi
 ## Contents of LibGcUniversal
  - [GcColorPickerCell](https://github.com/MrGcGamer/LibGcUniversalDocumentation#implementation-of-a-color-picker)
  - [GcImagePickerCell](https://github.com/MrGcGamer/LibGcUniversalDocumentation#implementation-of-an-image-picker)
+ - [GcTwitterCell](https://github.com/MrGcGamer/LibGcUniversalDocumentation#implementation-of-a-twitter-cell)
  - [GcDuoTwitterCell](https://github.com/MrGcGamer/LibGcUniversalDocumentation#implementation-of-a-duo-twitter-cell)
  - [Little helper functions for NSLayoutConstraints](https://github.com/MrGcGamer/LibGcUniversalDocumentation#using-the-helper-functions-for-nslayoutconstraints)
  - [Color utils](https://github.com/MrGcGamer/LibGcUniversalDocumentation#using-the-color-utils)
@@ -21,7 +22,7 @@ Run the `install.sh` script in this repository to automatically copy the necessa
 
 1. Download this repository
 2. Put the `.dylib` into your `theos/lib` folder
-3. Put the `GcUniversal` folder into your `theos/include` folder 
+3. Put the `GcUniversal` folder into your `theos/include` folder
 4. Done!
 
 ## Project configuration
@@ -45,12 +46,18 @@ PreferenceBundle plist (Root.plist e.g.)
         <string>YourColor</string>
         <key>supportsAlpha</key>
         <true/>
+        <key>safeOnDismiss</key>
+        <true/>
         <key>fallback</key>
         <string>ffffffff</string>
     </dict>
 ```
 ### supportsAlpha
 The `supportsAlpha` property is optional and will default to `true` if nothing else has been specified.
+
+### safeOnDismiss
+The `safeOnDismiss` property is optional and will default to `true` if nothing else has been specified.
+When `safeOnDismiss` is turned off, the user will have to press the `X` Button in the top right (or left on RTL langues, I don't know) in order for the color to be safed, when this option is on, the color will be safed even if the colorpicker was dismissed via the swipe down gesture.
 
 ### fallback
 The `fallback` property is optional and will default to a clear color if the fallback color hasn’t been set.
@@ -140,9 +147,9 @@ If you decided to let the user pick a video, you can retrieve an `NSURL` leading
 %hook SOMECLASS
 -(void)someMethod {
     %orig;
-    
+
     NSURL *videoURL = [GcImagePickerUtils videoURLFromDefaults:@"DEFAULTS" withKey:@"KEY"];
-    
+
     if (videoURL) { // this check is to prevent a chrash in case the user didn't select any media
         // do something with the videoURL
     }
@@ -157,7 +164,7 @@ In case you give the user the ability to choose a video or an image, you can eas
 %hook SOMECLASS
 -(void)someMethod {
     %orig;
-    
+
     BOOL isVideo = [GcImagePickerUtils isVideoInDefaults:@"DEFAULTS" withKey:@"KEY"];
 
     if (isVideo) {
@@ -173,6 +180,27 @@ BOOL isPhoto = [GcImagePickerUtils isImageInDefaults:@"DEFAULTS" withKey:@"KEY"]
 ```
 If you prefer that (though it doesn't really make any difference which method you use).
 
+## Implementation of a Twitter cell
+PreferenceBundle plist (Root.plist e.g.)
+```xml
+    <dict>
+        <key>cell</key>
+        <string>PSButtonCell</string>
+        <key>cellClass</key>
+        <string>GcTwitterCell</string>
+        <key>accountLabel</key>
+        <string>LabelForTheAccount</string>
+        <key>account</key>
+        <string>TwitterTagOfAccount</string>
+        <key>URL</key>
+        <string>URLToAnotherFancyImage</string>
+    </dict>
+```
+`URL` is an optional value, which can be set, to specify an URL to the images for the account somewhere online.
+
+If don't want to use the URLs, you will also need to include the profile picture of the account in the `Resources` folder of your preferences.
+It is recommended to use a picture with a resolution of `400x400`.
+The picture will have to have the same name as the Twitter tag of the provided account and be stored as a `.png` file.
 
 ## Implementation of a duo Twitter cell
 PreferenceBundle plist (Root.plist e.g.)
@@ -200,7 +228,7 @@ If you use the URLs, make sure they link to the images directly. It is also poss
 
 If don't want to use the URLs, you will also need to include the profile pictures of the two accounts in the `Resources` folder of your preferences.
 It is recommended to use pictures of a resolution of `400x400`.
-The pictures will have to have the same name as the Twitter tag of the corresponding account and be stored as `.png`s.
+The pictures will have to have the same name as the Twitter tag of the corresponding account and be stored as `.png` files.
 
 ## Using the helper functions for NSLayoutConstraints
 First of all, you will need to import HelperFunction.h as follows:
@@ -210,15 +238,15 @@ First of all, you will need to import HelperFunction.h as follows:
 The `HelperFunctions.h` file includes this interface:
 ```objc
 @interface UIView (extension)
--(void)anchorTop:(nullable NSLayoutAnchor <NSLayoutYAxisAnchor *> *)top 
-         leading:(nullable NSLayoutAnchor <NSLayoutXAxisAnchor *> *)leading 
-          bottom:(nullable NSLayoutAnchor <NSLayoutYAxisAnchor *> *)bottom 
-        trailing:(nullable NSLayoutAnchor <NSLayoutXAxisAnchor *> *)trailing 
-         padding:(UIEdgeInsets)insets 
+-(void)anchorTop:(nullable NSLayoutAnchor <NSLayoutYAxisAnchor *> *)top
+         leading:(nullable NSLayoutAnchor <NSLayoutXAxisAnchor *> *)leading
+          bottom:(nullable NSLayoutAnchor <NSLayoutYAxisAnchor *> *)bottom
+        trailing:(nullable NSLayoutAnchor <NSLayoutXAxisAnchor *> *)trailing
+         padding:(UIEdgeInsets)insets
             size:(CGSize)size ;
-            
--(void)anchorCenterX:(nullable NSLayoutAnchor <NSLayoutXAxisAnchor *> *)centerX 
-             centerY:(nullable NSLayoutAnchor <NSLayoutYAxisAnchor *> *)centerY 
+
+-(void)anchorCenterX:(nullable NSLayoutAnchor <NSLayoutXAxisAnchor *> *)centerX
+             centerY:(nullable NSLayoutAnchor <NSLayoutYAxisAnchor *> *)centerY
                 size:(CGSize)size ;
 
 -(void)anchorEqualsToView:(UIView *)view padding:(UIEdgeInsets)insets ;
