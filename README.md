@@ -259,7 +259,7 @@ UIView *view = [UIView new];
 
 [view anchorTop:someOtherView.topAnchor leading:someOtherView.leadingAnchor bottom:nil trailing:nil padding:UIEdgeInsetsMake(32,15,0,0) size:CGSizeMake(64,64)];
 ```
-Now, this would constraint the 'topAnchor' of `view` to the `topAnchor` of `someOtherView` with padding of `32`,
+Now, this would constraint the `topAnchor` of `view` to the `topAnchor` of `someOtherView` with padding of `32`,
 also, this would constraint the `leadingAnchor` of `view` to the `leadingAnchor` of `someOtherView` with padding of `15`,
 furthermore, this would constraint the `widthAnchor` and `heightAnchor` of `view` to `64` each.
 
