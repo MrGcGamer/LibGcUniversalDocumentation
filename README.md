@@ -57,7 +57,7 @@ The `supportsAlpha` property is optional and will default to `true` if nothing e
 
 ### safeOnDismiss
 The `safeOnDismiss` property is optional and will default to `true` if nothing else has been specified.
-When `safeOnDismiss` is turned off, the user will have to press the `X` Button in the top right (or left on RTL langues, I don't know) in order for the color to be safed, when this option is on, the color will be safed even if the colorpicker was dismissed via the swipe down gesture.
+When `safeOnDismiss` is turned off, the user will have to press the `X` Button in the top right (or left on RTL langues, I don't know) in order for the color to be saved, when this option is on, the color will be safed even if the colorpicker was dismissed via the swipe down gesture.
 
 ### fallback
 The `fallback` property is optional and will default to a clear color if the fallback color hasn’t been set.
