@@ -369,7 +369,7 @@ The interface in `GcImageUtils.h` looks as follows:
 - (NSArray <UIColor *> *)dominantColors;
 @end
 ```
-### dominantColor
+### dominantColors
 Do note that this function will return an array of colors with an unspecified count, thus meaning you will have to check for the array count manually and you might have to specify different behaviour within your project depending on the number of colors returned.
 
 The rest of these functions should be self-explanatory though, but if you do have a question, just ask me on Twitter or something.
