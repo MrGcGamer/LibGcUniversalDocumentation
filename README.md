@@ -52,6 +52,8 @@ PreferenceBundle plist (Root.plist e.g.)
         <true/>
         <key>fallback</key>
         <string>ffffffff</string>
+        <key>style</key>
+        <integer>1</integer>
     </dict>
 ```
 ### supportsAlpha
@@ -72,6 +74,12 @@ You may use any color hex code which condones to one of the following color hex 
 The `a` / `aa` (alpha) value has also to be written an in hex and __NOT__ as `:1.0`.<br/>
 I recommend using `rrggbbaa`.
 
+### style
+The `style` property is optional and will default to `0`, which is the same style used by the imagepicker (rounded corners). <br/>
+The `style` property can also be set to `1` which will result in the "stock" iOS style introduced in iOS 14 (the rainbow circle).
+
+![Preview of the styles](https://raw.githubusercontent.com/MrGcGamer/LibGcUniversalDocumentation/master/Preview.jpg)
+
 ### Retrieving a color (example)
 Once this is implemented you can then get the chosen color from within your tweak. So an example of how to retrieve the color could look something like this:
 
@@ -91,7 +99,7 @@ You may also use:
 ```objc
 [GcColorPickerUtils colorFromDefaults:@"DEFAULTS" withKey:@"KEY" fallback:@"ffffffff"]
 ```
-Fallback values have to condone to one of the above-mentioned notations
+Fallback values have to condone to one of the above-mentioned notations.
 
 ## Implementation of an image picker
 PreferenceBundle plist (Root.plist e.g.)
@@ -120,12 +128,12 @@ The `usesPhotos` property is optional and will default to `true`.
 ### usesVideos
 The `usesVideo` property is optional and will default to `false`.
 ### videoQuality
-The `videoQuality` property is optional and is set to specify a preferred video quality, thus affecting the storage space and quality of the video.
-The default value of `videoQuality` is `1`.
+The `videoQuality` property is optional and is set to specify a preferred video quality, thus affecting the storage space and quality of the video.<br/>
+The default value of `videoQuality` is `1`.<br/>
 Possible `videoQuality` values are as follows:
-`0` = high quality
-`1` = medium quality
-`2` = low quality
+- `0` = high quality
+- `1` = medium quality
+- `2` = low quality
 
 ### Retrieving an image (example)
 Once this is implemented you can then get the chosen image from within your tweak. So an example of how to retrieve the image could look something like this:
