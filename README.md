@@ -71,7 +71,7 @@ You may use any color hex code which condones to one of the following color hex 
  - `rgba`
  - `rrggbb`
  - `rrggbbaa`<br/><br/>
-The `a` / `aa` (alpha) value has also to be written an in hex and __NOT__ as `:1.0`.<br/>
+The `a` / `aa` (alpha) value has to be written in hex and __NOT__ as `:1.0`.<br/>
 I recommend using `rrggbbaa`.
 
 ### style
