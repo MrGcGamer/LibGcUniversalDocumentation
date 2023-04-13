@@ -1,0 +1,22 @@
+module GcUniversal {
+	module ColorPickerUtils {
+		header "GcColorPickerUtils.h"
+		export *
+	}
+	module ColorUtils {
+		header "GcColorUtils.h"
+		export *
+	}
+	module ImagePickerUtils {
+		header "GcImagePickerUtils.h"
+		export *
+	}
+	module ImageUtils {
+		header "GcImageUtils.h"
+		export *
+	}
+	module HelperFunctions {
+		header "HelperFunctions.h"
+		export *
+	}
+}

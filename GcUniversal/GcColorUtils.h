@@ -1,4 +1,5 @@
-#include <UIKit/UIKit.h>
+// By: @MrGcGamer
+#import <UIKit/UIKit.h>
 
 typedef NS_ENUM(NSUInteger, ColorComponent) {
    kColorRed,
@@ -15,4 +16,7 @@ typedef NS_ENUM(NSUInteger, ColorComponent) {
 - (CGFloat)getColorComponent:(ColorComponent)component ;
 - (CGFloat)rgbValue;
 - (BOOL)isGrayscale;
+- (BOOL)isNearGrayscale;
+- (BOOL)isDarkColor;
+- (BOOL)isLightColor;
 @end
