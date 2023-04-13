@@ -2,13 +2,13 @@
 #import <CoreGraphics/CoreGraphics.h>
 #import <UIKit/UIKit.h>
 
-typedef NS_CLOSED_ENUM(NSUInteger, ImagegSizingMode) {
+typedef NS_CLOSED_ENUM(NSUInteger, ImageSizingMode) {
 	kSizingModeMin,
 	kSizingModeMax
 };
 
 typedef struct {
-	ImagegSizingMode sizingMode;
+	ImageSizingMode sizingMode;
 	CGFloat size;
 	CGFloat scale;
 } ImageSizingConfig;
@@ -16,7 +16,7 @@ typedef struct {
 @interface GcImagePickerUtils : NSObject
 + (UIImage *)imageFromDefaults:(NSString *)defaults withKey:(NSString *)key ;
 + (UIImage *)imageFromDefaults:(NSString *)defaults withKey:(NSString *)key error:(NSError **)error ;
-+ (UIImage *)thumbnailFromDefaults:(NSString *)defaults withKey:(NSString *)key forSizingMode:(ImagegSizingMode)sizingMode ;
++ (UIImage *)thumbnailFromDefaults:(NSString *)defaults withKey:(NSString *)key forSizingMode:(ImageSizingMode)sizingMode ;
 + (UIImage *)thumbnailFromDefaults:(NSString *)defaults withKey:(NSString *)key forConfig:(ImageSizingConfig)sizingConfig ;
 + (UIImage *)thumbnailFromDefaults:(NSString *)defaults withKey:(NSString *)key maxSize:(CGFloat)maxSize scale:(CGFloat)scale ;
 + (UIImage *)thumbnailFromDefaults:(NSString *)defaults withKey:(NSString *)key minSize:(CGFloat)minSize scale:(CGFloat)scale ;
