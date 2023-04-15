@@ -292,6 +292,11 @@ Here you can specify the URL to an image will which be displayed as the accessor
 If you want to use a local image as the accessory icon, you will have to put it in the 'Resources' folder of your preference bundle and it will have to have the name:`userName.png` where `userName` is the same you specified earlier for display.
 ### Custom accessory image note
 It is recommended to provide an image with no clear border on any side, to avoid an unexpectedly small or shifted icon.
+### pfpURL
+This property holds the URL to the profile picture you want to display.
+### Local profile picture
+If don't want to use the URLs, you will also need to include the profile pictures of the two accounts in the `Resources` folder of your preferences.
+The pictures will have to have the same name as the Twitter tag of the corresponding account and be stored as `.png` files.
 ### URL
 `URL` is required and is the URL the user will be lead to, once they tapped the cell.
 
