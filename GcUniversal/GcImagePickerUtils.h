@@ -20,6 +20,7 @@ typedef struct {
 + (UIImage *)thumbnailFromDefaults:(NSString *)defaults withKey:(NSString *)key forConfig:(ImageSizingConfig)sizingConfig ;
 + (UIImage *)thumbnailFromDefaults:(NSString *)defaults withKey:(NSString *)key maxSize:(CGFloat)maxSize scale:(CGFloat)scale ;
 + (UIImage *)thumbnailFromDefaults:(NSString *)defaults withKey:(NSString *)key minSize:(CGFloat)minSize scale:(CGFloat)scale ;
++ (UIImage *)thumbnailForURL:(NSURL *)url withConfig:(ImageSizingConfig)config ;
 + (UIImage *)thumbnailForURL:(NSURL *)url maxSize:(CGFloat)maxSize scale:(CGFloat)scale ;
 + (UIImage *)thumbnailForURL:(NSURL *)url minSize:(CGFloat)minSize scale:(CGFloat)scale ;
 + (NSData *)dataFromDefaults:(NSString *)defaults withKey:(NSString *)key ;

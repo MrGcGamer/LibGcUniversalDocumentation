@@ -3,9 +3,9 @@ tbd-version:     4
 targets:         [ arm64-ios, arm64e-ios ]
 uuids:
   - target:          arm64-ios
-    value:           2202CAC5-F744-3F39-85AA-5EFFA13E508E
+    value:           D2F0C737-B178-3722-A56A-B224B5820D6F
   - target:          arm64e-ios
-    value:           C14FFD6F-EF94-3419-AEB5-9659EFDC2BC3
+    value:           7AFF40E5-A196-341E-B4B6-D8AF5D435F4A
 flags:           [ not_app_extension_safe ]
 install-name:    '/usr/lib/libgcuniversal.dylib'
 current-version: 0
