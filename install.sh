@@ -22,6 +22,9 @@ cp GcUniversal/libgcuniversalrootless.tbd "${THEOS}/lib/iphone/rootless/libgcuni
 mkdir -p "${THEOS}/include/GcUniversal"
 cp GcUniversal/*.h "${THEOS}/include/GcUniversal/"
 
+# Copy the module map
+cp GcUniversal/module.modulemap "${THEOS}/include/GcUniversal/"
+
 # We're done
 set +v
 
