@@ -4,6 +4,7 @@ LibGcUniversal is a universal library for tweak development I made because I thi
 ## Contents of LibGcUniversal
  - [GcColorPickerCell](#implementation-of-a-color-picker)
  - [GcImagePickerCell](#implementation-of-an-image-picker)
+ - [GcSymbolPickerCell](#implementation-of-a-symbol-picker)
  - [Getting picker results from Sandboxed processes](#getting-picker-results-from-sandboxed-processes)
  - [GcTwitterCell](#implementation-of-a-twitter-cell)
  - [GcDuoTwitterCell](#implementation-of-a-duo-twitter-cell)
@@ -189,6 +190,59 @@ BOOL success = [GcImagePickerUtils setImage:img forDefaults:@"com.mrgcgamer.test
 if (success)
     NSLog(@"Image saved successfully");
 ```
+## Implementation of a symbol picker
+PreferenceBundle plist (Root.plist e.g.)
+```xml
+<dict>
+    <key>cell</key>
+    <string>PSLinkCell</string>
+    <key>cellClass</key>
+    <string>GcSymbolPickerCell</string>
+    <key>label</key>
+    <string>Your Symbol Label</string>
+    <key>defaults</key>
+    <string>com.your.identifier</string>
+    <key>key</key>
+    <string>YourSymbol</string>
+    <key>tintColor</key>
+    <string>6B10E6FF</string>
+</dict>
+```
+The symbol picker is only supported on iOS 13+, as SFSymbols didn't exist before.<br/>
+If you include one in your tweak and it run on a lower iOS version, a pop up will appear, telling the user, that symbols are not supported on their iOS version.<br/>
+### tintColor
+This is optional and allows you to specify a color, which will be used as the `tintColor` of the selected symbol in the preview.
+
+## Stylisation of the pickers
+LibGcUniversal allows you to specify SFSymbols as the icon image for the cell. This functions identical to `iconImageSystem` from [Cepheis HBListController](https://hbang.github.io/libcephei/Classes/HBListController.html). <br/>
+(This feature requires iOS 13+ and will display nothing on lower iOS versions)
+```xml
+<dict>
+    <key>cell</key>
+    <string>PSLinkCell</string>
+    <key>cellClass</key>
+    <string>GcSOMETHINGPickerCell</string>
+    <key>iconImageSystem</key>
+    <dict>
+        <key>name</key>
+        <string>heart</string>
+        <key>backgroundColor</key>
+        <string>#ff3b30</string>
+    </dict>
+</dict>
+```
+### name
+Required. The symbol name to use.
+### weight
+Optional. The weight to render the symbol at. The supported values are: `ultraLight`, `thin`, `light`, `regular`, `medium`, `semibold`, `bold`, `heavy`, `black`. The default is `regular`.
+### scale
+Optional. The scale to render the symbol at. The supported values are: `small`, `medium`, `large`. The default is `medium`.
+### pointSize
+Optional. The equivalent font size to render the symbol at. The default is `20.0`.
+### tintColor
+Optional. The color to render the icon in. The default is no value. If the value is not set, the default iOS blue tint color is used. When backgroundColor is set, no value means white (#ffffff) will be used.
+### backgroundColor
+Optional. The background color to use for the symbol. When specified, the symbol will be rendered inside an icon shape of the specified background color. The symbol will be scaled down by 20% to appropriately fit the icon shape. The default is no value, which means no icon shape will be rendered.
 
 ## Getting picker results from Sandboxed processes
 I would suggest using Cephei if you are working in a sandboxed app, as it makes preferences mush easier and handles XPC stuff for the prefs.<br/>
@@ -380,23 +434,34 @@ Don't forget to import the `GcImageUtils.h`.
 ```objc
 #import <GcUniversal/GcImageUtils.h>
 ```
-The interface in `GcImageUtils.h` looks as follows:
+The interface in `GcImageUtils.h` looks something like this:
 ```objc
+BOOL isHEICSupported(void);
+NSData *UIImageHEICRepresentation(UIImage *image, CGFloat compressionQuality);
+
 @interface UIImage (imageUtils)
 + (UIImage *)stockImgForBundleID:(NSString *)arg1 ;
-+ (UIImage *)thumbnailForImage:(UIImage *)image withMaxSize:(CGFloat)maxSize scale:(CGFloat)scale ;
++ (UIImage *)thumbnailForImage:(UIImage *)image withMaxSize:(CGFloat)size scale:(CGFloat)scale ;
 - (UIColor *)averageColor;
 - (NSArray <UIColor *> *)dominantColors;
 @end
 ```
+### isHEICSupported
+Return a `BOOL` indicating wether the device/iOS combination support the HEIC image format.
+
+### UIImageHEICRepresentation
+Same thing as [UIImageJPEGRepresentation](https://developer.apple.com/documentation/uikit/1624115-uiimagejpegrepresentation?language=objc) or [UIImagePNGRepresentation](https://developer.apple.com/documentation/uikit/1624096-uiimagepngrepresentation?language=objc) but for `HEIC`.
+
 ### stockImgForBundleID
 This method will give you the stock (unthemed) icon for an app / service.
 
 ### thumbnailForMaxSize
 This method returns a downscaled version of the provided image.
-It downscaled to the `maxSize` provided eg: with `maxSize = 400` and an image of `1920x1080` it will be resized to `400x225`.<br>
+It downscaled to the `size` provided eg: with `size = 400` and an image of `1920x1080` it will be resized to `400x225`.<br>
 Why is that useful?<br>
-Downsampling the image manually instead of letting UIKit handle this at display time drastically reduces the memory footprint of the image in memory, thus it is recommended to use this method whenever you use "global" images of a substantial size for extended periods of time.
+Downsampling the image manually instead of letting UIKit handle this at display time drastically reduces the memory footprint of the image in memory, thus it is recommended to use this method whenever you use "global" images of a substantial size for extended periods of time.<br>
+
+(If the `size` provided is negativ, it will implicitely function as `thumbnailForImage:withMinSize:scale:`, thus the short side of the resulting image will be at least `size` long)
 
 ### averageColor
 Returns the average / mean color of an image.

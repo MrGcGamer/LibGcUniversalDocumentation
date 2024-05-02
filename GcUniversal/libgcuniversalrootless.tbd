@@ -1,18 +1,13 @@
 --- !tapi-tbd
 tbd-version:     4
 targets:         [ arm64-ios, arm64e-ios ]
-uuids:
-  - target:          arm64-ios
-    value:           1EA21B6E-62C2-3491-BD56-62ACA223840F
-  - target:          arm64e-ios
-    value:           8577A32B-3D7F-3AAC-A9AD-3D460ED4CB05
 flags:           [ not_app_extension_safe ]
 install-name:    '@rpath/libgcuniversal.dylib'
 current-version: 0
 compatibility-version: 0
 exports:
   - targets:         [ arm64-ios, arm64e-ios ]
-    symbols:         [ _logToFile ]
-    objc-classes:    [ GcColorPickerCell, GcColorPickerUtils, GcDuoTwitterCell, GcImagePickerCell, 
-                       GcImagePickerUtils, GcSocialCell, GcTwitterCell, _GcRainbowView ]
+    symbols:         [ _UIImageHEICRepresentation, _isHEICSupported, _logToFile ]
+    objc-classes:    [ GcColorPickerCell, GcColorPickerUtils, GcDuoTwitterCell, GcImagePickerCell,
+                       GcImagePickerUtils, GcSocialCell, GcSymbolPickerCell, GcTwitterCell ]
 ...

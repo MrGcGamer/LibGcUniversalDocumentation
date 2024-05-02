@@ -37,14 +37,6 @@ NS_ASSUME_NONNULL_BEGIN
 -(void)anchorEqualsToView:(UIView *)view ;
 @end
 
-#if __cplusplus
-extern "C" {
-#endif
-
-void logToFile(NSString *path, NSString *log);
-
-#if __cplusplus
-}
-#endif
+FOUNDATION_EXPORT void logToFile(NSString *path, NSString *log);
 
 NS_ASSUME_NONNULL_END
