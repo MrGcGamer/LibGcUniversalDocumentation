@@ -449,7 +449,7 @@ NSData *UIImageHEICRepresentation(UIImage *image, CGFloat compressionQuality);
 ### isHEICSupported
 Return a `BOOL` indicating wether the device/iOS combination support the HEIC image format.
 
-### UIImageHEICRepresentation
+### UIImageHEICRepresentation (Deprecated/Obsoleted with iOS 17)
 Same thing as [UIImageJPEGRepresentation](https://developer.apple.com/documentation/uikit/1624115-uiimagejpegrepresentation?language=objc) or [UIImagePNGRepresentation](https://developer.apple.com/documentation/uikit/1624096-uiimagepngrepresentation?language=objc) but for `HEIC`.
 
 ### stockImgForBundleID
